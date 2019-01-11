@@ -28,7 +28,7 @@ constructor(props){
       <div className="col-xs-12 col-sm-2" key={this.props.index}>
       <Card>
       <CardMedia>
-      <img src={process.env.PUBLIC_URL + this.props.place.imageUrl}/>
+      <img src={process.env.PUBLIC_URL + this.props.place.imageUrl} style={{'width':'30%'}}/>
       </CardMedia>
       <CardTitle title={this.props.place.title}></CardTitle>
       <CardText>{this.props.place.descripcion}</CardText>

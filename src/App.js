@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Home from './pages/Home';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import MyAppBar from './components/navigation/MyAppBar';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 
-import{
-  BrowserRoute as Router,
-  Link,
-  Route
-} from 'react-router-dom';
 
 class App extends Component {
 constructor(props){
@@ -20,10 +18,18 @@ constructor(props){
   render() {
     return (
       <MuiThemeProvider>
-        <Home></Home>
+      <div>
+      <MyAppBar/>
+      <TransitionGroup>
+        <CSSTransition className="left-out" timeout={300}
+        key={this.props.location.pathname.split('/')[0]}>
+            {this.props.children}
+        </CSSTransition>
+      </TransitionGroup>
+      </div>
       </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
